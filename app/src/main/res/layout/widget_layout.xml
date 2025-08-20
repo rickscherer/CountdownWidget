@@ -46,11 +46,13 @@
     <TextView
         android:id="@+id/tv_custom_text"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
         android:gravity="center"
         android:textColor="@android:color/white"
-        android:textSize="12sp"
-        tools:text="Your Text Here" />
+        android:textSize="11sp"
+        tools:text="Your Text Here"
+        android:singleLine="true"
+        android:ellipsize="end" />
 
 </LinearLayout>

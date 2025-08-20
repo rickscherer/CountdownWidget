@@ -11,7 +11,6 @@ import android.widget.DatePicker
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.flask.colorpicker.ColorPickerView
-import com.flask.colorpicker.builder.ColorPickerClickListener
 import com.flask.colorpicker.builder.ColorPickerDialogBuilder
 import java.util.Calendar
 
@@ -56,7 +55,7 @@ class CountdownWidgetConfigureActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_countdown_widget_configure)
-        setResult(Activity.RESULT_CANCELED)
+        setResult(RESULT_CANCELED)
 
         appWidgetId = intent?.extras?.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
             ?: AppWidgetManager.INVALID_APPWIDGET_ID
@@ -71,6 +70,16 @@ class CountdownWidgetConfigureActivity : AppCompatActivity() {
         val datePicker = findViewById<DatePicker>(R.id.date_picker)
         val customTextInput = findViewById<EditText>(R.id.et_custom_text)
         customTextInput.setText(loadCustomText(this, appWidgetId))
+
+        val savedTimeMillis = loadTargetDate(this, appWidgetId)
+        if (savedTimeMillis != -1L) {
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = savedTimeMillis
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            datePicker.updateDate(year, month, day)
+        }
 
         findViewById<Button>(R.id.btn_pick_color).setOnClickListener {
             ColorPickerDialogBuilder
@@ -102,7 +111,7 @@ class CountdownWidgetConfigureActivity : AppCompatActivity() {
             val resultValue = Intent().apply {
                 putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
             }
-            setResult(Activity.RESULT_OK, resultValue)
+            setResult(RESULT_OK, resultValue)
             finish()
         }
     }
