@@ -22,3 +22,4 @@ app/build/
 # Other
 captures/
 .DS_Store
+/app/release/
