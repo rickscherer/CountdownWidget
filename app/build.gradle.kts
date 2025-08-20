@@ -4,14 +4,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        create("production") {
-            storeFile = file("C:\\Users\\ricks\\AndroidStudioProjects\\androidstudios-keystore")
-            storePassword = "ssvs7YbFTDc8_Hqe"
-            keyAlias = "production"
-            keyPassword = "ssvs7YbFTDc8_Hqe"
-        }
-    }
     namespace = "com.rickscherer.countdownwidget"
     compileSdk = 36
 
