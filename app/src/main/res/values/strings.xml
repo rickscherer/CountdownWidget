@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">Countdown Widget</string>
-    <string name="widget_description">A widget that counts down to a date.</string>
-</resources>
