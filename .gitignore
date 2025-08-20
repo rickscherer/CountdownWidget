@@ -1,0 +1,24 @@
+# IDE files
+.idea/
+.gradle/
+local.properties
+
+# Build output
+build/
+app/build/
+
+# Generated files
+*.apk
+*.aab
+*.ap_
+*.apks
+*.dex
+*.class
+
+# Keystore files (NEVER commit these)
+*.jks
+*.keystore
+
+# Other
+captures/
+.DS_Store
